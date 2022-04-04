@@ -6,7 +6,7 @@ class ModeloCarreras{
 
 	static public function mdlMostrarCarreras(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT ID_CARRERA,NOMBRE,'X' as acciones FROM carreras");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_CARRERA, NOMBRE, 'X' as acciones FROM carreras");
 
 		$stmt -> execute();
 

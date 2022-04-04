@@ -42,7 +42,9 @@
                    
                 </tr>
             </thead>
+
             <tbody>
+
             </tbody>
         </table>    
 
@@ -119,7 +121,7 @@
 			},  			
             "columnDefs":[ 
             		{
-	            		"targets": 5,
+	            		"targets": 2,
 	            		"sortable": false,
 	            		"render": function (data, type, full, meta){
 	            			return "<center>" +
@@ -136,7 +138,7 @@
             "columns":[
                     {"data": "ID_CARRERA"},
                     {"data": "NOMBRE"},
-                    {"data": "acciones"}
+                    {"data": "acciones"},
                 ],
 
             "language":{
@@ -319,6 +321,9 @@
                     "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas"
             },
   		});
+
+
+          
 
         $(".btn-agregar-carrera").on('click',function(){
             accion = "registrar";
