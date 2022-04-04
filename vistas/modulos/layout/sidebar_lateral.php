@@ -61,16 +61,30 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/categorias.php')" class="nav-link" style="cursor: pointer;">
+                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/encargado.php')" class="nav-link" style="cursor: pointer;">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Categorias</p>
+                                <p>Encargados</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/productos.php')" class="nav-link" style="cursor: pointer;">
+                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/carrera.php')" class="nav-link" style="cursor: pointer;">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Productos</p>
+                                <p>Carreras</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/institucion.php')" class="nav-link" style="cursor: pointer;">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Instituciones</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/tipoPractica.php')" class="nav-link" style="cursor: pointer;">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipo de Practica</p>
                             </a>
                         </li>
 
