@@ -37,7 +37,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/categorias.php')" class="nav-link" style="cursor: pointer;">
+                            <a onclick="cargarContenido('content-wrapper','vistas/modulos/practicante.php')" class="nav-link" style="cursor: pointer;">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Practicantes</p>
                             </a>
