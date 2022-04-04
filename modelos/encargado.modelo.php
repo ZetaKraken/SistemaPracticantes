@@ -6,7 +6,7 @@ class ModeloEncargados{
 
 	static public function mdlMostrarEncargados(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT id,nombre,'X' as acciones FROM encargados");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_ENCARGADO, NOMBRE, 'X' as acciones FROM encargados");
 
 		$stmt -> execute();
 
@@ -33,7 +33,7 @@ class ModeloEncargados{
 
 	static public function mdlEliminarEncargados($id){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM encargados WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM encargados WHERE ID_ENCARGADO = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
@@ -50,8 +50,8 @@ class ModeloEncargados{
 	static public function mdlActualizarEncargados($id,$nombre){
 
 		$stmt = Conexion::conectar()->prepare("UPDATE encargados
-											   SET nombre = :nombre
-											   WHERE id = :id");
+											   SET NOMBRE = :nombre
+											   WHERE ID_ENCARGADO = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 		$stmt -> bindParam(":nombre", $nombre, PDO::PARAM_STR);

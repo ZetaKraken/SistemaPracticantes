@@ -74,7 +74,7 @@
             // content-wrapper
             echo '<div class="content-wrapper">';
         
-                include "modulos/carrera.php";
+                include "modulos/tipoPractica.php";
                 
             echo '</div>';
 

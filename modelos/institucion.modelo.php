@@ -6,7 +6,7 @@ class ModeloInstituciones{
 
 	static public function mdlMostrarInstituciones(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT id,nombre,'X' as acciones FROM instituciones");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_INSTITUCION, NOMBRE, 'X' as acciones FROM instituciones");
 
 		$stmt -> execute();
 
@@ -33,7 +33,7 @@ class ModeloInstituciones{
 
 	static public function mdlEliminarInstituciones($id){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM Instituciones WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM Instituciones WHERE ID_INSTITUCION = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
@@ -50,8 +50,8 @@ class ModeloInstituciones{
 	static public function mdlActualizarInstituciones($id,$nombre){
 
 		$stmt = Conexion::conectar()->prepare("UPDATE instituciones
-											   SET nombre = :nombre
-											   WHERE id = :id");
+											   SET NOMBRE = :nombre
+											   WHERE ID_INSTITUCION = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 		$stmt -> bindParam(":nombre", $nombre, PDO::PARAM_STR);

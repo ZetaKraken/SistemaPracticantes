@@ -39,6 +39,7 @@
                 <tr>
                     <td style="width:5%;">Id</td>
                     <td>Nombre</td>
+                    <td style="width:5%;">Acciones</td>
                    
                 </tr>
             </thead>
@@ -105,6 +106,17 @@
 
 	$(document).ready(function(){
 
+        $.ajax({
+            url: "ajax/carrera.ajax.php",
+                        method: "GET",
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(respuesta){
+                            console.log("A soy de aca"+respuesta);
+                        }
+        });
+
         var accion = "";
 
         var Toast = Swal.mixin({
@@ -118,6 +130,9 @@
   			"ajax":{
 				"url": "ajax/carrera.ajax.php",
 				"type":"POST",
+                "data" :{
+                    "tipo" : "1"
+                },
 				"dataSrc":""
 			},  			
             "columnDefs":[ 

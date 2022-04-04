@@ -2,11 +2,11 @@
 
 require_once "conexion.php";
 
-class ModeloTipoPractica{
+class ModeloTipoPracticas{
 
-	static public function mdlMostrarTipoPractica(){
+	static public function mdlMostrarTipoPracticas(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT id,nombre,'X' as acciones FROM tipo_Practica");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_TIPO_PRACTICA, NOMBRE, 'X' as acciones FROM tipo_practicas");
 
 		$stmt -> execute();
 
@@ -15,9 +15,9 @@ class ModeloTipoPractica{
 		$stmt = null;
 	}
 
-	static public function mdlRegistrarTipoPractica($nombre){
+	static public function mdlRegistrarTipoPracticas($nombre){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO tipo_Practica(nombre) VALUES (:nombre)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO tipo_practicas(nombre) VALUES (:nombre)");
 
 		$stmt -> bindParam(":nombre", $nombre, PDO::PARAM_STR);
 
@@ -31,9 +31,9 @@ class ModeloTipoPractica{
 
 	}
 
-	static public function mdlEliminarTipoPractica($id){
+	static public function mdlEliminarTipoPracticas($id){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM tipo_Practica WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM tipo_practicas WHERE ID_TIPO_PRACTICA = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
@@ -47,11 +47,11 @@ class ModeloTipoPractica{
 
 	}
 
-	static public function mdlActualizarTipoPractica($id,$nombre){
+	static public function mdlActualizarTipoPracticas($id,$nombre){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE tipo_Practica
-											   SET nombre = :nombre
-											   WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE tipo_practicas
+											   SET NOMBRE = :nombre
+											   WHERE ID_TIPO_PRACTICA = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 		$stmt -> bindParam(":nombre", $nombre, PDO::PARAM_STR);
