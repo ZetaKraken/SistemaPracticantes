@@ -4,7 +4,7 @@
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
         <img src="vistas/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">SISTEMA DE ADMINISTRACION</span>
+        <span class="brand-text font-weight-light">SISTEMA DE GESTION</span>
     </a>
 
     <!-- Sidebar -->

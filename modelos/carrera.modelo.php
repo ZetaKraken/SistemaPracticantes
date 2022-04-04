@@ -6,7 +6,7 @@ class ModeloCarreras{
 
 	static public function mdlMostrarCarreras(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT id,nombre,'X' as acciones FROM Carreras");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_CARRERA,NOMBRE,'X' as acciones FROM carreras");
 
 		$stmt -> execute();
 
@@ -17,7 +17,7 @@ class ModeloCarreras{
 
 	static public function mdlRegistrarCarreras($nombre){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO carreras(nombre) VALUES (:nombre)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO carreras(NOMBRE) VALUES (:nombre)");
 
 		$stmt -> bindParam(":nombre", $nombre, PDO::PARAM_STR);
 
@@ -33,7 +33,7 @@ class ModeloCarreras{
 
 	static public function mdlEliminarCarreras($id){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM carreras WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM carreras WHERE ID_CARRERA = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
@@ -50,8 +50,8 @@ class ModeloCarreras{
 	static public function mdlActualizarCarreras($id,$nombre){
 
 		$stmt = Conexion::conectar()->prepare("UPDATE carreras
-											   SET nombre = :nombre
-											   WHERE id = :id");
+											   SET NOMBRE = :nombre
+											   WHERE ID_CARRERA = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 		$stmt -> bindParam(":nombre", $nombre, PDO::PARAM_STR);

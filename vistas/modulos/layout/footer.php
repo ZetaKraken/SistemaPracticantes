@@ -4,6 +4,6 @@
         <b>Version</b> 1.0.1
     </div>
 
-    <strong>Copyright &copy; 2022 <a href="https://www.sancarlos.cl/munisancarlos.cl/web/">MUnicipalidad de San Carlos</a>.</strong> Todos los derechos reservados.
+    <strong>Copyright &copy; 2022 <a href="https://www.sancarlos.cl/munisancarlos.cl/web/">Municipalidad de San Carlos</a>.</strong> Todos los derechos reservados.
 
 </footer>
