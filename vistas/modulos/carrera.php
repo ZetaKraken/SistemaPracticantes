@@ -78,6 +78,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                             <input type="hidden" id ="idcarrera" name ="carrera" value ="">
+                            
                             <label for="txtnombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="txtnombre" placeholder="Ingrese el nombre">
                         </div>
