@@ -6,8 +6,16 @@ require_once "../modelos/practicante.modelo.php";
 class ajaxPracticantes{
 
 	public $id;
-	public $nombre;
-	
+	public $nombres;
+	public $apellidos;
+	public $rut;
+	public $institucion_id;
+	public $carrera_id;
+	public $tipo_practica_id;
+	public $fecha_inicio;
+	public $fecha_termino;
+	public $foto;
+	public $encargado_id;
 
 	public function MostrarPracticantes(){
 
@@ -18,7 +26,7 @@ class ajaxPracticantes{
 
 	public function registrarPracticantes(){
 		
-		$respuesta = ControladorPracticantes::ctrRegistrarPracticantes($this->nombre);
+		$respuesta = ControladorPracticantes::ctrRegistrarPracticantes($this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
 
 		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
 	}
@@ -32,7 +40,7 @@ class ajaxPracticantes{
 
 	public function actualizarPracticantes(){
 		
-		$respuesta = ControladorPracticantes::ctrActualizarPracticantes($this->id,$this->nombre);
+		$respuesta = ControladorPracticantes::ctrActualizarPracticantes($this->id, $this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
 
 		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
 	}
@@ -46,8 +54,10 @@ if(!isset($_POST["accion"])){
 
 	if($_POST["accion"] == "registrar"){
 		$insertar = new ajaxPracticantes();
-		$insertar->nombre = $_POST["nombre"];
-		
+		$insertar->Practicantes = $_POST["Practicantes"];
+		$insertar->ruta = $_POST["ruta"];
+		$insertar->estado = $_POST["estado"];
+		$insertar->fecha = $_POST["fecha"];
 		$insertar->registrarPracticantes();
 	}
 
@@ -63,10 +73,18 @@ if(!isset($_POST["accion"])){
 		$actualizar = new ajaxPracticantes();
 
 		$actualizar->id = $_POST["id"];
-		$actualizar->nombre = $_POST["nombre"];
-	
+		$actualizar->Practicantes = $_POST["Practicantes"];
+		$actualizar->ruta = $_POST["ruta"];
+		$actualizar->estado = $_POST["estado"];
+		$actualizar->fecha = $_POST["fecha"];
 		
 		$actualizar->actualizarPracticantes();
 	}
 
 }
+
+
+
+
+
+

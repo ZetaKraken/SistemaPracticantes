@@ -9,9 +9,9 @@ class ControladorPracticantes{
 		return $respuesta;
 	}
 
-	static public function ctrRegistrarPracticantes($nombre){
+	static public function ctrRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
 
-		$respuesta = ModeloPracticantes::mdlRegistrarPracticantes($nombre);
+		$respuesta = ModeloPracticantes::mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id);
 
 		return $respuesta;
 	}
@@ -23,9 +23,9 @@ class ControladorPracticantes{
 		return $respuesta;
 	}
 
-	static public function ctrActualizarPracticantes($id,$nombre){
+	static public function ctrActualizarPracticantes($id, $nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
 
-		$respuesta = ModeloPracticantes::mdlActualizarPracticantes($id,$nombre);
+		$respuesta = ModeloPracticantes::mdlActualizarPracticantes($id, $nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id);
 
 		return $respuesta;
 	}

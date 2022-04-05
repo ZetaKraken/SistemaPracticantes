@@ -2,11 +2,11 @@
 
 require_once "conexion.php";
 
-class ModeloCategorias{
+class ModeloPracticantes{
 
-	static public function mdlMostrarCategorias(){
+	static public function mdlMostrarPracticantes(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT id,categoria,ruta,fecha,estado,'X' as acciones FROM categorias");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_PRACTICANTES, NOMBRES, APELLIDOS, RUT, INSTITUCION_ID, CARRERA_ID, TIPO_PRACTICA_ID, FECHA_INICIO, FECHA_TERMINO, FOTO, ENCARGADO_ID,'X' as acciones FROM practicantes");
 
 		$stmt -> execute();
 
@@ -15,11 +15,11 @@ class ModeloCategorias{
 		$stmt = null;
 	}
 
-	static public function mdlRegistrarCategorias($categoria, $ruta, $estado, $fecha){
+	static public function mdlRegistrarPracticantes($Practicantes, $ruta, $estado, $fecha){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO categorias(categoria,ruta,estado,fecha) VALUES (:categoria,:ruta,:estado,:fecha)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO Practicantes(Practicantes,ruta,estado,fecha) VALUES (:Practicantes,:ruta,:estado,:fecha)");
 
-		$stmt -> bindParam(":categoria", $categoria, PDO::PARAM_STR);
+		$stmt -> bindParam(":Practicantes", $Practicantes, PDO::PARAM_STR);
 		$stmt -> bindParam(":ruta", $ruta, PDO::PARAM_STR);
 		$stmt -> bindParam(":estado", $estado, PDO::PARAM_STR);
 		$stmt -> bindParam(":fecha", $fecha, PDO::PARAM_STR);
@@ -34,9 +34,9 @@ class ModeloCategorias{
 
 	}
 
-	static public function mdlEliminarCategoria($id){
+	static public function mdlEliminarPracticantes($id){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM categorias WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM Practicantes WHERE id = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
@@ -50,17 +50,17 @@ class ModeloCategorias{
 
 	}
 
-	static public function mdlActualizarCategoria($id,$categoria, $ruta, $estado, $fecha){
+	static public function mdlActualizarPracticantes($id,$Practicantes, $ruta, $estado, $fecha){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE categorias
-											   SET categoria = :categoria,
+		$stmt = Conexion::conectar()->prepare("UPDATE Practicantes
+											   SET Practicantes = :Practicantes,
 											   	   ruta = :ruta,
 												   estado = :estado,
 												   fecha = :fecha
 											   WHERE id = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
-		$stmt -> bindParam(":categoria", $categoria, PDO::PARAM_STR);
+		$stmt -> bindParam(":Practicantes", $Practicantes, PDO::PARAM_STR);
 		$stmt -> bindParam(":ruta", $ruta, PDO::PARAM_STR);
 		$stmt -> bindParam(":estado", $estado, PDO::PARAM_STR);
 		$stmt -> bindParam(":fecha", $fecha, PDO::PARAM_STR);

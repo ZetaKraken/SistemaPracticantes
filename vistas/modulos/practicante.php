@@ -6,7 +6,7 @@
 		<div class="row mb-2">
 
 			<div class="col-sm-6">
-				<h1>Administrar Categorías</h1>
+				<h1>Administrar Estudiantes en Practica</h1>
 			</div>
 
 			<div class="col-sm-6">
@@ -15,7 +15,7 @@
 
 					<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 
-                	<li class="breadcrumb-item active">Gestor Categorías</li>						
+                	<li class="breadcrumb-item active">Gestor Practicantes</li>						
 				</ol>
 
 			</div>
@@ -30,18 +30,24 @@
     
     <div class="container-fluid">   
 
-        <div class="btn-agregar-categoria btnAgregar">
-            <button type="button" class="btn btn-info btn-sm mb-4" data-toggle="modal" data-target="#modal-gestionar-categoria" data-dismiss="modal"> <i class="fas fa-plus-square"></i> Agregar Categoría</button>
+        <div class="btn-agregar-practicantes btnAgregar">
+            <button type="button" class="btn btn-info btn-sm mb-4" data-toggle="modal" data-target="#modal-gestionar-practicantes" data-dismiss="modal"> <i class="fas fa-plus-square"></i> Agregar practicante</button>
         </div>
 
-        <table id="tablaCategorias" class="table table-striped table-bordered nowrap" style="width:100%;">
+        <table id="tablapracticantes" class="table table-striped table-bordered nowrap" style="width:100%;">
             <thead class="bg-info">
                 <tr>
                     <td style="width:5%;">Id</td>
-                    <td>Categoria</td>
-                    <td>Ruta</td>
-                    <td style="width:15%;">Fecha</td>
-                    <td style="width:10%;">Estado</td>
+                    <td>Nombres</td>
+                    <td>Apellidos</td>
+                    <td style="width:15%;">RUT</td>
+                    <td style="width:10%;">Institucion</td>
+                    <td style="width:10%;">Carrera</td>
+                    <td style="width:10%;">Tipo de Practica</td>
+                    <td style="width:10%;">Fecha Inicio</td>
+                    <td style="width:10%;">Fecha Termino</td>
+                    <td style="width:10%;">Foto</td>
+                    <td style="width:10%;">Encargado</td>
                     <td style="width:5%;">Acciones</td>
                 </tr>
             </thead>
@@ -55,7 +61,7 @@
 <!-- ./ CONTENT -->
 
 <!-- VENTANA MODAL PARA REGISTRO Y ACTUALIZACION -->
-<div class="modal fade" id="modal-gestionar-categoria">
+<div class="modal fade" id="modal-gestionar-practicantes">
 
     <div class="modal-dialog modal-lg">
 
@@ -65,7 +71,7 @@
             =MODAL HEADER
             ===============================================================-->
             <div class="modal-header bg-info">
-                <h4 class="modal-title">Gestionar Categoría</h4>
+                <h4 class="modal-title">Gestionar Estudiante en Practica</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -245,32 +251,32 @@
                                   timer: 3000
                                 });
 
-  		var table = $("#tablaCategorias").DataTable({
+  		var table = $("#tablapracticantes").DataTable({
   			"ajax":{
-				"url": "ajax/categorias.ajax.php",
+				"url": "ajax/practicante.ajax.php",
 				"type":"POST",
 				"dataSrc":""
 			},  			
             "columnDefs":[ 
-	            	{
-	            		"targets": 4,
-	            		"sortable": false,
-	            		"render": function (data, type, full, meta){
+	            	// {
+	            	// 	"targets": 4,
+	            	// 	"sortable": false,
+	            	// 	"render": function (data, type, full, meta){
 
-	            			if(data == 1){
-								return "<div class='bg-primary color-palette text-center'>ACTIVO</div> " 
-	            			}else{
-								return "<div class='bg-danger color-palette text-center'>INACTIVO</div> " 
-	            			}
+	            	// 		if(data == 1){
+					// 			return "<div class='bg-primary color-palette text-center'>ACTIVO</div> " 
+	            	// 		}else{
+					// 			return "<div class='bg-danger color-palette text-center'>INACTIVO</div> " 
+	            	// 		}
 	            			
-	            		}
-	            	},
+	            	// 	}
+	            	// },
             		{
-	            		"targets": 5,
+	            		"targets": 11,
 	            		"sortable": false,
 	            		"render": function (data, type, full, meta){
 	            			return "<center>" +
-	                                    "<button type='button' class='btn btn-primary btn-sm btnEditar' data-toggle='modal' data-target='#modal-gestionar-categoria'> " +
+	                                    "<button type='button' class='btn btn-primary btn-sm btnEditar' data-toggle='modal' data-target='#modal-gestionar-practicantes'> " +
 	            						  "<i class='fas fa-pencil-alt'></i> " +
 	            					    "</button> " + 
 	            					    "<button type='button' class='btn btn-danger btn-sm btnEliminar'> " +
@@ -281,11 +287,18 @@
             		}
             	],
             "columns":[
-                    {"data": "id"},
-                    {"data": "categoria"},
-                    {"data": "ruta"},
-                    {"data": "fecha"},
-                    {"data": "estado"},
+                    {"data": "ID_PRACTICANTE"},
+                    {"data": "NOMBRES"},
+                    {"data": "APELLIDOS"},
+                    {"data": "RUT"},
+                    {"data": "INSTITUCION_ID"},
+                    {"data": "CARRERA_ID"},
+                    {"data": "TIPO_PRACTICA_ID"},
+                    {"data": "FECHA_INICIO"},
+                    {"data": "FECHA_TERMINO"},
+                    {"data": "FOTO"},
+                    {"data": "ENCARGADO_ID"},
+
                     {"data": "acciones"}
                 ],
 
@@ -470,11 +483,11 @@
             },
   		});
 
-        $(".btn-agregar-categoria").on('click',function(){
+        $(".btn-agregar-practicantes").on('click',function(){
             accion = "registrar";
         });
 
-        $('#tablaCategorias tbody').on('click','.btnEliminar',function(){
+        $('#tablapracticantess tbody').on('click','.btnEliminar',function(){
             var data = table.row($(this).parents('tr')).data();
             
             var id = data["id"];
@@ -486,7 +499,7 @@
             swal.fire({
 
                 title: "¡CONFIRMACION!",
-                text: "Seguro que desea eliminar la categoria?",
+                text: "Seguro que desea eliminar la practicantes?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Sí, Eliminar",
@@ -498,7 +511,7 @@
 
                     //LLAMADO AJAX
                     $.ajax({
-                        url: "ajax/categorias.ajax.php",
+                        url: "ajax/practicantess.ajax.php",
                         method: "POST",
                         data: datos,
                         cache: false,
@@ -519,19 +532,19 @@
                     })
                 }
                 else{
-                    // alert("no se modifico la categoria");
+                    // alert("no se modifico la practicantes");
                 }
 
             })
         })
 
-        $('#tablaCategorias tbody').on('click','.btnEditar',function(){
+        $('#tablapracticantess tbody').on('click','.btnEditar',function(){
             
             var data = table.row($(this).parents('tr')).data();
             accion = "actualizar";
 
-            $("#idCategoria").val(data["id"])
-            $("#txtCategoria").val(data["categoria"]);
+            $("#idpracticantes").val(data["id"])
+            $("#txtpracticantes").val(data["practicantes"]);
             $("#txtRuta").val(data["ruta"]);
             $("#txtFecha").val(data["fecha"]);
             $("#ddlEstado").val(data["estado"]);
@@ -539,11 +552,11 @@
 
         })
 
-        // GUARDAR LA INFORMACION DE CATEGORIA DESDE LA VENTANA MODAL
+        // GUARDAR LA INFORMACION DE practicantes DESDE LA VENTANA MODAL
         $("#btnGuardar").on('click',function(){
 
-            var id = $("#idCategoria").val(),
-                categoria = $("#txtCategoria").val(),
+            var id = $("#idpracticantes").val(),
+                practicantes = $("#txtpracticantes").val(),
                 ruta = $("#txtRuta").val(),
                 estado = $("#ddlEstado").val(),
                 fecha = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -551,7 +564,7 @@
             var datos = new FormData();
 
             datos.append('id',id)
-            datos.append('categoria',categoria)
+            datos.append('practicantes',practicantes)
             datos.append('ruta',ruta);
             datos.append('estado',estado);
             datos.append('fecha',fecha);
@@ -572,7 +585,7 @@
                     
 
                     $.ajax({
-                        url: "ajax/categorias.ajax.php",
+                        url: "ajax/practicantess.ajax.php",
                         method: "POST",
                         data: datos,
                         cache: false,
@@ -581,12 +594,12 @@
                         success: function(respuesta){
                             console.log(respuesta);
 
-                            $("#modal-gestionar-categoria").modal('hide');
+                            $("#modal-gestionar-practicantes").modal('hide');
                             
                             table.ajax.reload(null,false);
 
-                            $("#idCategoria").val("");
-                            $("#txtCategoria").val("");
+                            $("#idpracticantes").val("");
+                            $("#txtpracticantes").val("");
                             $("#txtRuta").val("");
                             $("#ddlEstado").val([1]);
 
