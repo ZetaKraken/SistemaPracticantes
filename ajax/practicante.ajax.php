@@ -5,17 +5,17 @@ require_once "../modelos/practicante.modelo.php";
 
 class ajaxPracticantes{
 
-	public $id;
-	public $nombres;
-	public $apellidos;
-	public $rut;
-	public $institucion_id;
-	public $carrera_id;
-	public $tipo_practica_id;
-	public $fecha_inicio;
-	public $fecha_termino;
-	public $foto;
-	public $encargado_id;
+	// public $id;
+	// public $nombres;
+	// public $apellidos;
+	// public $rut;
+	// public $institucion_id;
+	// public $carrera_id;
+	// public $tipo_practica_id;
+	// public $fecha_inicio;
+	// public $fecha_termino;
+	// public $foto;
+	// public $encargado_id;
 
 	public function MostrarPracticantes(){
 
@@ -24,32 +24,33 @@ class ajaxPracticantes{
 		echo json_encode($respuesta);
 	}
 
-	public function registrarPracticantes(){
+	// public function registrarPracticantes(){
 		
-		$respuesta = ControladorPracticantes::ctrRegistrarPracticantes($this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
+	// 	$respuesta = ControladorPracticantes::ctrRegistrarPracticantes($this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
 
-		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
-	}
+	// 	echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
+	// }
 
-	public function eliminarPracticantes(){
+	// public function eliminarPracticantes(){
 		
-		$respuesta = ControladorPracticantes::ctrEliminarPracticantes($this->id);
+	// 	$respuesta = ControladorPracticantes::ctrEliminarPracticantes($this->id);
 
-		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
-	}
+	// 	echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
+	// }
 
-	public function actualizarPracticantes(){
+	// public function actualizarPracticantes(){
 		
-		$respuesta = ControladorPracticantes::ctrActualizarPracticantes($this->id, $this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
+	// 	$respuesta = ControladorPracticantes::ctrActualizarPracticantes($this->id, $this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
 
-		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
-	}
+	// 	echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
+	// }
 	
 }
 
 if(!isset($_POST["accion"])){
 	$respuesta = new ajaxPracticantes();
 	$respuesta -> MostrarPracticantes();
+
 }else{
 
 	if($_POST["accion"] == "registrar"){

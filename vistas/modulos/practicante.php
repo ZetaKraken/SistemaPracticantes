@@ -34,20 +34,20 @@
             <button type="button" class="btn btn-info btn-sm mb-4" data-toggle="modal" data-target="#modal-gestionar-practicantes" data-dismiss="modal"> <i class="fas fa-plus-square"></i> Agregar practicante</button>
         </div>
 
-        <table id="tablapracticantes" class="table table-striped table-bordered nowrap" style="width:100%;">
+        <table id="tablaPracticante" class="table table-striped table-bordered nowrap" style="width:100%;">
             <thead class="bg-info">
                 <tr>
                     <td style="width:5%;">Id</td>
-                    <td>Nombres</td>
-                    <td>Apellidos</td>
-                    <td style="width:15%;">RUT</td>
-                    <td style="width:10%;">Institucion</td>
-                    <td style="width:10%;">Carrera</td>
-                    <td style="width:10%;">Tipo de Practica</td>
-                    <td style="width:10%;">Fecha Inicio</td>
-                    <td style="width:10%;">Fecha Termino</td>
-                    <td style="width:10%;">Foto</td>
-                    <td style="width:10%;">Encargado</td>
+                    <td style="width:5%;">Nombres</td>
+                    <td style="width:5%;">Apellidos</td>
+                    <td style="width:5%;">RUT</td>
+                    <td style="width:5%;">Institucion</td>
+                    <td style="width:5%;">Carrera</td>
+                    <td style="width:5%;">Tipo de Practica</td>
+                    <td style="width:2%;">Fecha Inicio</td>
+                    <td style="width:2%;">Fecha Termino</td>
+                    <td style="width:5%;">Foto</td>
+                    <td style="width:5%;">Encargado</td>
                     <td style="width:5%;">Acciones</td>
                 </tr>
             </thead>
@@ -242,6 +242,17 @@
 
 	$(document).ready(function(){
 
+        $.ajax({
+            url: "ajax/practicante.ajax.php",
+                        method: "GET",
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(respuesta){
+                            console.log("Datos"+respuesta+"Fin de DAtos");
+                        }
+        });
+
         var accion = "";
 
         var Toast = Swal.mixin({
@@ -251,26 +262,14 @@
                                   timer: 3000
                                 });
 
-  		var table = $("#tablapracticantes").DataTable({
+  		var table = $("#tablaPracticante").DataTable({
   			"ajax":{
 				"url": "ajax/practicante.ajax.php",
 				"type":"POST",
 				"dataSrc":""
 			},  			
             "columnDefs":[ 
-	            	// {
-	            	// 	"targets": 4,
-	            	// 	"sortable": false,
-	            	// 	"render": function (data, type, full, meta){
-
-	            	// 		if(data == 1){
-					// 			return "<div class='bg-primary color-palette text-center'>ACTIVO</div> " 
-	            	// 		}else{
-					// 			return "<div class='bg-danger color-palette text-center'>INACTIVO</div> " 
-	            	// 		}
-	            			
-	            	// 	}
-	            	// },
+	           
             		{
 	            		"targets": 11,
 	            		"sortable": false,
@@ -287,19 +286,18 @@
             		}
             	],
             "columns":[
-                    {"data": "ID_PRACTICANTE"},
+                    {"data": "ID_PRACTICANTES"},
                     {"data": "NOMBRES"},
                     {"data": "APELLIDOS"},
                     {"data": "RUT"},
-                    {"data": "INSTITUCION_ID"},
-                    {"data": "CARRERA_ID"},
-                    {"data": "TIPO_PRACTICA_ID"},
+                    {"data": "4"},
+                    {"data": "5"},
+                    {"data": "6"},
                     {"data": "FECHA_INICIO"},
                     {"data": "FECHA_TERMINO"},
                     {"data": "FOTO"},
-                    {"data": "ENCARGADO_ID"},
-
-                    {"data": "acciones"}
+                    {"data": "10"},
+                    {"data": "acciones"},
                 ],
 
             "language":{

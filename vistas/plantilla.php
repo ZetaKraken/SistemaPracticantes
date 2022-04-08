@@ -74,7 +74,7 @@
             // content-wrapper
             echo '<div class="content-wrapper">';
         
-                include "modulos/pagina_en_blanco.php";
+                include "modulos/practicante.php";
                 
             echo '</div>';
 

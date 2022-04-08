@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4 menu_lateral">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 menu_lateral ">
 
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
@@ -8,7 +8,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar"  >
 
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -21,9 +21,9 @@
         </div>
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2 ">
+        <nav class="mt-2  ">
             
-            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar  flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
                 
             <li class="nav-item">
                      <a href="#" class="nav-link">

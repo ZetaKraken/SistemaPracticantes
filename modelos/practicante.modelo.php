@@ -6,7 +6,7 @@ class ModeloPracticantes{
 
 	static public function mdlMostrarPracticantes(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT ID_PRACTICANTES, NOMBRES, APELLIDOS, RUT, INSTITUCION_ID, CARRERA_ID, TIPO_PRACTICA_ID, FECHA_INICIO, FECHA_TERMINO, FOTO, ENCARGADO_ID,'X' as acciones FROM practicantes");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_PRACTICANTES, NOMBRES, APELLIDOS, RUT, instituciones.NOMBRE, carreras.NOMBRE, tipo_practicas.NOMBRE, FECHA_INICIO, FECHA_TERMINO, FOTO, encargados.NOMBRE ,'X' as acciones FROM practicantes INNER JOIN instituciones ON practicantes.INSTITUCION_ID = instituciones.ID_INSTITUCION INNER JOIN carreras on practicantes.CARRERA_ID = carreras.ID_CARRERA INNER JOIN tipo_practicas on practicantes.TIPO_PRACTICA_ID = tipo_practicas.ID_TIPO_PRACTICA INNER JOIN encargados on practicantes.ENCARGADO_ID = encargados.ID_ENCARGADO");
 
 		$stmt -> execute();
 
@@ -15,14 +15,14 @@ class ModeloPracticantes{
 		$stmt = null;
 	}
 
-	static public function mdlRegistrarPracticantes($Practicantes, $ruta, $estado, $fecha){
+	static public function mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO Practicantes(Practicantes,ruta,estado,fecha) VALUES (:Practicantes,:ruta,:estado,:fecha)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO Practicantes(NOMBRES, APELLIDOS, RUT, INSTITUCION_ID, CARRERA_ID, TIPO_PRACTICA_ID, FECHA_INICIO, FECHA_TERMINO, FOTO, ENCARGADO_ID) VALUES (:nombres, :apellidos, :rut, :institucion_id, :carrera_id, :tipo_practica_id, :fecha_inicio, :fecha_termino, :foto, :encargado_id)");
 
-		$stmt -> bindParam(":Practicantes", $Practicantes, PDO::PARAM_STR);
-		$stmt -> bindParam(":ruta", $ruta, PDO::PARAM_STR);
-		$stmt -> bindParam(":estado", $estado, PDO::PARAM_STR);
-		$stmt -> bindParam(":fecha", $fecha, PDO::PARAM_STR);
+		$stmt -> bindParam(":nombres", $nombres, PDO::PARAM_STR);
+		$stmt -> bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
+		$stmt -> bindParam(":rut", $rut, PDO::PARAM_STR);
+		$stmt -> bindParam(":institucion_id", $institucion_id, PDO::PARAM_STR);
 
 		if($stmt -> execute()){
             return "La categoría se registró correctamente";
@@ -36,7 +36,7 @@ class ModeloPracticantes{
 
 	static public function mdlEliminarPracticantes($id){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM Practicantes WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM practicantes WHERE ID_PRACTICANTE = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
 
