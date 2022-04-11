@@ -117,7 +117,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="carrera">Seleccione Carrera:</label>
-                        <select class="form-control" >
+                        <select class="form-control" id="Scarrera">
                         <option value="">Ninguna</option>
                         <?php
                         $usuario = 'root';
@@ -141,7 +141,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="carrera">Seleccione Institucion:</label>
-                        <select class="form-control" >
+                        <select class="form-control" id="Sinstitucion" >
                         <option value="">Ninguna</option>
                         <?php
                         $usuario = 'root';
@@ -166,7 +166,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="carrera">Seleccione Encargado:</label>
-                        <select class="form-control" >
+                        <select class="form-control" id="Sencargado" >
                         <option value="">Ninguna</option>
                         <?php
                         $usuario = 'root';
@@ -191,7 +191,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="carrera">Seleccione Tipo de Practica:</label>
-                        <select class="form-control" >
+                        <select class="form-control" id="Stipopractica">
                         <option value="">Ninguna</option>
                         <?php
                         $usuario = 'root';
@@ -485,87 +485,104 @@
             accion = "registrar";
         });
 
-        $('#tablapracticantess tbody').on('click','.btnEliminar',function(){
-            var data = table.row($(this).parents('tr')).data();
+        // $('#tablapracticantess tbody').on('click','.btnEliminar',function(){
+        //     var data = table.row($(this).parents('tr')).data();
             
-            var id = data["id"];
+        //     var id = data["id"];
 
-            var datos = new FormData();
-            datos.append('accion',"eliminar")
-            datos.append('id',id);
+        //     var datos = new FormData();
+        //     datos.append('accion',"eliminar")
+        //     datos.append('id',id);
 
-            swal.fire({
+        //     swal.fire({
 
-                title: "¡CONFIRMACION!",
-                text: "Seguro que desea eliminar la practicantes?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: "Sí, Eliminar",
-                cancelButtonText: "Cancelar"
+        //         title: "¡CONFIRMACION!",
+        //         text: "Seguro que desea eliminar la practicantes?",
+        //         icon: 'warning',
+        //         showCancelButton: true,
+        //         confirmButtonText: "Sí, Eliminar",
+        //         cancelButtonText: "Cancelar"
 
-            }).then(resultado => {
+        //     }).then(resultado => {
 
-                if(resultado.value)  {                    
+        //         if(resultado.value)  {                    
 
-                    //LLAMADO AJAX
-                    $.ajax({
-                        url: "ajax/practicantess.ajax.php",
-                        method: "POST",
-                        data: datos,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function(respuesta){
+        //             //LLAMADO AJAX
+        //             $.ajax({
+        //                 url: "ajax/practicantess.ajax.php",
+        //                 method: "POST",
+        //                 data: datos,
+        //                 cache: false,
+        //                 contentType: false,
+        //                 processData: false,
+        //                 success: function(respuesta){
 
-                            console.log(respuesta);
+        //                     console.log(respuesta);
                         
-                            table.ajax.reload( null, false );                            
+        //                     table.ajax.reload( null, false );                            
 
-                            Toast.fire({
-                                icon: 'success',
-                                title: respuesta
-                            });
+        //                     Toast.fire({
+        //                         icon: 'success',
+        //                         title: respuesta
+        //                     });
                         
-                        }
-                    })
-                }
-                else{
-                    // alert("no se modifico la practicantes");
-                }
+        //                 }
+        //             })
+        //         }
+        //         else{
+        //             // alert("no se modifico la practicantes");
+        //         }
 
-            })
-        })
+        //     })
+        // })
 
-        $('#tablapracticantess tbody').on('click','.btnEditar',function(){
+        // $('#tablapracticantess tbody').on('click','.btnEditar',function(){
             
-            var data = table.row($(this).parents('tr')).data();
-            accion = "actualizar";
+        //     var data = table.row($(this).parents('tr')).data();
+        //     accion = "actualizar";
 
-            $("#idpracticantes").val(data["id"])
-            $("#txtpracticantes").val(data["practicantes"]);
-            $("#txtRuta").val(data["ruta"]);
-            $("#txtFecha").val(data["fecha"]);
-            $("#ddlEstado").val(data["estado"]);
+        //     $("#idpracticantes").val(data["id"])
+        //     $("#txtpracticantes").val(data["practicantes"]);
+        //     $("#txtRuta").val(data["ruta"]);
+        //     $("#txtFecha").val(data["fecha"]);
+        //     $("#ddlEstado").val(data["estado"]);
             
 
-        })
+        // })
 
         // GUARDAR LA INFORMACION DE practicantes DESDE LA VENTANA MODAL
         $("#btnGuardar").on('click',function(){
 
             var id = $("#idpracticantes").val(),
-                practicantes = $("#txtpracticantes").val(),
-                ruta = $("#txtRuta").val(),
-                estado = $("#ddlEstado").val(),
-                fecha = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                nombres = $("#txtpracticantes").val(),
+                apellidos = $("#txtRuta").val(),
+                rut = $("#ddlEstado").val(),
+                institucion_id = $("#ddlEstado").val(),
+                carrera_id = $("#ddlEstado").val(),
+                tipo_practica_id = $("#ddlEstado").val(),
+                fecha_inicio = $("#ddlEstado").val(),
+                fecha_termino = $("#ddlEstado").val(),
+                foto = $("#ddlEstado").val(),
+                encargado_id = $("#ddlEstado").val(),
+                
+
+                //fecha = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
             
             var datos = new FormData();
 
             datos.append('id',id)
-            datos.append('practicantes',practicantes)
-            datos.append('ruta',ruta);
-            datos.append('estado',estado);
-            datos.append('fecha',fecha);
+            datos.append('nombres',nombres)
+            datos.append('apellidos',apellidos);
+            datos.append('rut',rut);
+            datos.append('institucion_id',institucion_id;
+            datos.append('carrera_id',carrera_id);
+            datos.append('tipo_practica_id',tipo_practica_id);
+            datos.append('fecha_inicio',fecha_inicio);
+            datos.append('fecha_termino',fecha_termino);
+            datos.append('foto',foto);
+            datos.append('encargado_id',encargado_id);
+
+
             datos.append('accion',accion);
 
             swal.fire({

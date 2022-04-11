@@ -9,12 +9,12 @@ class ControladorPracticantes{
 		return $respuesta;
 	}
 
-	// static public function ctrRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
+	static public function ctrRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
 
-	// 	$respuesta = ModeloPracticantes::mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id);
+		$respuesta = ModeloPracticantes::mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id);
 
-	// 	return $respuesta;
-	// }
+		return $respuesta;
+	}
 
 	// static public function ctrEliminarPracticantes($id){
 

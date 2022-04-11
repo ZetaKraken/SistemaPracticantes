@@ -23,11 +23,17 @@ class ModeloPracticantes{
 		$stmt -> bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
 		$stmt -> bindParam(":rut", $rut, PDO::PARAM_STR);
 		$stmt -> bindParam(":institucion_id", $institucion_id, PDO::PARAM_STR);
+		$stmt -> bindParam(":carrera_id", $carrera_id, PDO::PARAM_STR);
+		$stmt -> bindParam(":tipo_practica_id", $tipo_practica_id, PDO::PARAM_STR);
+		$stmt -> bindParam(":fecha_inicio", $fecha_inicio, PDO::PARAM_STR);
+		$stmt -> bindParam(":fecha_termino", $fecha_termino, PDO::PARAM_STR);
+		$stmt -> bindParam(":foto", $foto, PDO::PARAM_STR);
+		$stmt -> bindParam(":encargado_id", $encargado_id, PDO::PARAM_STR);
 
 		if($stmt -> execute()){
-            return "La categoría se registró correctamente";
+            return "El practicante se registró correctamente";
         }else{
-            return "Error, no se pudo registrar la categoría";
+            return "Error, no se pudo registrar el practicante";
         }        
 
         $stmt = null;
