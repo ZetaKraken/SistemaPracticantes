@@ -31,19 +31,19 @@ class ajaxPracticantes{
 		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
 	}
 
-	// public function eliminarPracticantes(){
+	public function eliminarPracticantes(){
 		
-	// 	$respuesta = ControladorPracticantes::ctrEliminarPracticantes($this->id);
+		$respuesta = ControladorPracticantes::ctrEliminarPracticantes($this->id);
 
-	// 	echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
-	// }
+		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
+	}
 
-	// public function actualizarPracticantes(){
+	public function actualizarPracticantes(){
 		
-	// 	$respuesta = ControladorPracticantes::ctrActualizarPracticantes($this->id, $this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
+		$respuesta = ControladorPracticantes::ctrActualizarPracticantes($this->id, $this->nombres, $this->apellidos, $this->rut, $this->institucion_id, $this->carrera_id, $this->tipo_practica_id, $this->fecha_inicio, $this->fecha_termino, $this->foto, $this->encargado_id);
 
-	// 	echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
-	// }
+		echo json_encode($respuesta,JSON_UNESCAPED_UNICODE);
+	}
 	
 }
 
@@ -65,17 +65,17 @@ if(!isset($_POST["accion"])){
 		$insertar->fecha_termino = $_POST["fecha_termino"];
 		$insertar->foto = $_POST["foto"];
 		$insertar->encargado_id = $_POST["encargado_id"];
-		
+
 		$insertar->registrarPracticantes();
 	}
 
-	// if($_POST["accion"] == "eliminar"){
-	// 	$eliminar = new ajaxPracticantes();
+	if($_POST["accion"] == "eliminar"){
+		$eliminar = new ajaxPracticantes();
 
-	// 	$eliminar->id = $_POST["id"];
+		$eliminar->id = $_POST["id"];
 		
-	// 	$eliminar->eliminarPracticantes();
-	// }
+		$eliminar->eliminarPracticantes();
+	}
 
 	// if($_POST["accion"] == "actualizar"){
 	// 	$actualizar = new ajaxPracticantes();

@@ -493,70 +493,70 @@
             accion = "registrar";
         });
 
-        // $('#tablapracticantess tbody').on('click','.btnEliminar',function(){
-        //     var data = table.row($(this).parents('tr')).data();
+        $('#tablaPracticante tbody').on('click','.btnEliminar',function(){
+            var data = table.row($(this).parents('tr')).data();
             
-        //     var id = data["id"];
+            var id = data["ID_PRACTICANTES"];
 
-        //     var datos = new FormData();
-        //     datos.append('accion',"eliminar")
-        //     datos.append('id',id);
+            var datos = new FormData();
+            datos.append('accion',"eliminar")
+            datos.append('id',id);
 
-        //     swal.fire({
+            swal.fire({
 
-        //         title: "¡CONFIRMACION!",
-        //         text: "Seguro que desea eliminar la practicantes?",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonText: "Sí, Eliminar",
-        //         cancelButtonText: "Cancelar"
+                title: "¡CONFIRMACION!",
+                text: "Seguro que desea eliminar la practicantes?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Sí, Eliminar",
+                cancelButtonText: "Cancelar"
 
-        //     }).then(resultado => {
+            }).then(resultado => {
 
-        //         if(resultado.value)  {                    
+                if(resultado.value)  {                    
 
-        //             //LLAMADO AJAX
-        //             $.ajax({
-        //                 url: "ajax/practicantess.ajax.php",
-        //                 method: "POST",
-        //                 data: datos,
-        //                 cache: false,
-        //                 contentType: false,
-        //                 processData: false,
-        //                 success: function(respuesta){
+                    //LLAMADO AJAX
+                    $.ajax({
+                        url: "ajax/practicante.ajax.php",
+                        method: "POST",
+                        data: datos,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(respuesta){
 
-        //                     console.log(respuesta);
+                            console.log(respuesta);
                         
-        //                     table.ajax.reload( null, false );                            
+                            table.ajax.reload( null, false );                            
 
-        //                     Toast.fire({
-        //                         icon: 'success',
-        //                         title: respuesta
-        //                     });
+                            Toast.fire({
+                                icon: 'success',
+                                title: respuesta
+                            });
                         
-        //                 }
-        //             })
-        //         }
-        //         else{
-        //             // alert("no se modifico la practicantes");
-        //         }
+                        }
+                    })
+                }
+                else{
+                    // alert("no se modifico la practicantes");
+                }
 
-        //     })
-        // })
+            })
+        })
 
-        // $('#tablapracticantess tbody').on('click','.btnEditar',function(){
+        $('#tablaPracticante tbody').on('click','.btnEditar',function(){
             
-        //     var data = table.row($(this).parents('tr')).data();
-        //     accion = "actualizar";
+            var data = table.row($(this).parents('tr')).data();
+            accion = "actualizar";
 
-        //     $("#idpracticantes").val(data["id"])
-        //     $("#txtpracticantes").val(data["practicantes"]);
-        //     $("#txtRuta").val(data["ruta"]);
-        //     $("#txtFecha").val(data["fecha"]);
-        //     $("#ddlEstado").val(data["estado"]);
+            $("#idpracticantes").val(data["id"])
+            $("#txtpracticantes").val(data["practicantes"]);
+            $("#txtRuta").val(data["ruta"]);
+            $("#txtFecha").val(data["fecha"]);
+            $("#ddlEstado").val(data["estado"]);
             
 
-        // })
+        })
 
         // GUARDAR LA INFORMACION DE practicantes DESDE LA VENTANA MODAL
         $("#btnGuardar").on('click',function(){
@@ -611,7 +611,7 @@
                     
 
                     $.ajax({
-                        url: "ajax/practicantes.ajax.php",
+                        url: "ajax/practicante.ajax.php",
                         method: "POST",
                         data: datos,
                         cache: false,

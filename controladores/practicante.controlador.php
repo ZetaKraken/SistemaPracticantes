@@ -16,12 +16,12 @@ class ControladorPracticantes{
 		return $respuesta;
 	}
 
-	// static public function ctrEliminarPracticantes($id){
+	static public function ctrEliminarPracticantes($id){
 
-	// 	$respuesta = ModeloPracticantes::mdlEliminarPracticantes($id);
+		$respuesta = ModeloPracticantes::mdlEliminarPracticantes($id);
 
-	// 	return $respuesta;
-	// }
+		return $respuesta;
+	}
 
 	// static public function ctrActualizarPracticantes($id, $nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
 
