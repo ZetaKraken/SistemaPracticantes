@@ -84,34 +84,35 @@
                <div class="row">
                    <div class="col-sm-4">
                         <div class="form-group">
-                            <input type="hidden" id ="idpracticante" name ="practicante" value ="">
+                            <input type="hidden" id ="idpracticantes" name ="practicantes" value ="">
+
                             <label for="txtnombres">Nombres</label>
                             <input type="text" class="form-control" name="nombres" id="txtnonbres" placeholder="Ingrese el nombre">
                         </div>
                    </div>
                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="txtapellido">Apellidos</label>
-                            <input type="text" class="form-control" name="apellido" id="txtapellido" placeholder="Ingrese el apellido">
+                            <label for="txtapellidos">Apellidos</label>
+                            <input type="text" class="form-control" name="apellidos" id="txtapellidos" placeholder="Ingrese el apellido">
                         </div>
                    </div>
                    <div class="col-sm-4">
                         <div class="form-group">
                             <label for="txtrut">Rut</label>
-                            <input type="text" class="form-control" name="rut"  required oninput="checkRut(this)"  id="txtrut" placeholder="Ingrese el rut">
+                            <input type="text" class="form-control" name="rut"    id="txtrut" placeholder="Ingrese el rut">
                         </div>
                    </div>
                    <div class="col-sm-4">
                         <div class="form-group">
-                        <label for="fechainicio">Fecha Inicio</label>
-	                    <input type="date" class="form-control" id="fechainicio" name="fechainicio" placeholder="aaaa-mm-dd">
+                        <label for="fecha_inicio">Fecha Inicio</label>
+	                    <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="aaaa-mm-dd">
                         </div>
                    </div>
                    <div class="col-sm-4">
                         <div class="form-group">
                        
-                        <label for="fechafin">Fecha Fin</label>
-                        <input type="date" class="form-control" id="fechafin" name="fechafin" placeholder="aaaa-mm-dd">
+                        <label for="fecha_termino">Fecha Termino</label>
+                        <input type="date" class="form-control" id="fecha_termino" name="fecha_termino" placeholder="aaaa-mm-dd">
                         </div>
                    </div>
                    <div class="col-sm-4">
@@ -191,7 +192,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                         <label for="carrera">Seleccione Tipo de Practica:</label>
-                        <select class="form-control" id="Stipopractica">
+                        <select class="form-control" name="Stipo_practica" id="Stipo_practica">
                         <option value="">Ninguna</option>
                         <?php
                         $usuario = 'root';
@@ -210,6 +211,13 @@
                         ?>
                         </select>
                     
+                        </div>
+                       
+                   </div>
+                   <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="txtfoto">Foto</label>
+                            <input type="text" class="form-control" name="foto"    id="txtfoto" placeholder="Ingrese la foto">
                         </div>
                    </div>
 
@@ -554,40 +562,43 @@
         $("#btnGuardar").on('click',function(){
 
             var id = $("#idpracticantes").val(),
-                nombres = $("#txtpracticantes").val(),
-                apellidos = $("#txtRuta").val(),
-                rut = $("#ddlEstado").val(),
-                institucion_id = $("#ddlEstado").val(),
-                carrera_id = $("#ddlEstado").val(),
-                tipo_practica_id = $("#ddlEstado").val(),
-                fecha_inicio = $("#ddlEstado").val(),
-                fecha_termino = $("#ddlEstado").val(),
-                foto = $("#ddlEstado").val(),
-                encargado_id = $("#ddlEstado").val(),
-                
+                nombres = $("#txtnonbres").val(),
+                apellidos = $("#txtapellidos").val(),
+                rut = $("#txtrut").val(),
+                institucion_id = $("#Sinstitucion").val(),
+                carrera_id = $("#Scarrera").val(),
+                tipo_practica_id = $("#Stipo_practica").val(),
+                fecha_inicio = $("#fecha_inicio").val(),
+                fecha_termino = $("#fecha_termino").val(),
+                foto = $("#txtfoto").val(),
+                encargado_id = $("#Sencargado").val();
+
+                //console.warn("Imprimiendo "+foto);
 
                 //fecha = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
             
             var datos = new FormData();
 
-            datos.append('id',id)
-            datos.append('nombres',nombres)
+            datos.append('id',id);
+            datos.append('nombres',nombres);
             datos.append('apellidos',apellidos);
             datos.append('rut',rut);
-            datos.append('institucion_id',institucion_id;
+            datos.append('institucion_id',institucion_id);
             datos.append('carrera_id',carrera_id);
             datos.append('tipo_practica_id',tipo_practica_id);
             datos.append('fecha_inicio',fecha_inicio);
             datos.append('fecha_termino',fecha_termino);
             datos.append('foto',foto);
             datos.append('encargado_id',encargado_id);
-
-
             datos.append('accion',accion);
+
+           
+
+            
 
             swal.fire({
                 title: "¡CONFIRMAR!",
-                text: "¿Está seguro que desea registrar la categoría?",
+                text: "¿Está seguro que desea registrar el pracicante?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: "Si, deseo registrar",
@@ -600,7 +611,7 @@
                     
 
                     $.ajax({
-                        url: "ajax/practicantess.ajax.php",
+                        url: "ajax/practicantes.ajax.php",
                         method: "POST",
                         data: datos,
                         cache: false,
@@ -613,10 +624,19 @@
                             
                             table.ajax.reload(null,false);
 
-                            $("#idpracticantes").val("");
-                            $("#txtpracticantes").val("");
-                            $("#txtRuta").val("");
-                            $("#ddlEstado").val([1]);
+                            
+
+                            $("#idpracticantes").val(""),
+                            $("#txtnonbres").val(""),
+                            $("#txtapellidos").val(""),
+                            $("#txtrut").val(""),
+                            $("#Sinstitucion").val(""),
+                            $("#Scarrera").val(""),
+                            $("#Stipo_practica").val(""),
+                            $("#fecha_inicio").val(""),
+                            $("#fecha_termino").val(""),
+                            $("#txtfoto").val(""),
+                            $("#Sencargado").val("");
 
                             Toast.fire({
                                 icon: 'success',
