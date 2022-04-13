@@ -204,10 +204,11 @@
                         $query = $db->prepare("SELECT * FROM tipo_practicaS");
                         $query->execute();
                         $data = $query->fetchAll();
-
+                        
                         foreach ($data as $valores):
                         echo '<option value="'.$valores["ID_TIPO_PRACTICA"].'">'.$valores["NOMBRE"].'</option>';
                         endforeach;
+                        
                         ?>
                         </select>
                     
@@ -549,11 +550,17 @@
             var data = table.row($(this).parents('tr')).data();
             accion = "actualizar";
 
-            $("#idpracticantes").val(data["id"])
-            $("#txtpracticantes").val(data["practicantes"]);
-            $("#txtRuta").val(data["ruta"]);
-            $("#txtFecha").val(data["fecha"]);
-            $("#ddlEstado").val(data["estado"]);
+                            $("#idpracticantes").val(data["ID_PRACTICANTES"]),
+                            $("#txtnonbres").val(data["NOMBRES"]),
+                            $("#txtapellidos").val(data["APELLIDOS"]),
+                            $("#txtrut").val(data["RUT"]),
+                            $("#Sinstitucion").val(data["INSTITUCION_ID"]),
+                            $("#Scarrera").val(data["CARRERA_ID"]),
+                            $("#Stipo_practica").val(data["TIPO_PRACTICA_ID"]),
+                            $("#fecha_inicio").val(data["FECHA_INICIO"]),
+                            $("#fecha_termino").val(data["FECHA_TERMINO"]),
+                            $("#txtfoto").val(data["FOTO"]),
+                            $("#Sencargado").val(data["ENCARGADO_ID"]);
             
 
         })

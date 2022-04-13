@@ -56,29 +56,41 @@ class ModeloPracticantes{
 
 	}
 
-	// static public function mdlActualizarPracticantes($id,$Practicantes, $ruta, $estado, $fecha){
+	static public function mdlActualizarPracticantes($id,$nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
 
-	// 	$stmt = Conexion::conectar()->prepare("UPDATE Practicantes
-	// 										   SET Practicantes = :Practicantes,
-	// 										   	   ruta = :ruta,
-	// 											   estado = :estado,
-	// 											   fecha = :fecha
-	// 										   WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE practicantes
+											   SET NOMBRES = :nombres,
+											   	   APELLIDOS = :apellidos,
+												   RUT = :rut,
+												   INSTITUCION_ID = :institucion_id,
+												   CARRERA_ID = :carrera_id,
+												   TIPO_PRACTICA_ID = :tipo_practica_id,
+												   FECHA_INICIO = :fecha_inicio,
+												   FECHA_TERMINO = :fecha_termino,
+												   FOTO = :foto,
+												   ENCARGADO_ID = :encargado_id,
+											   WHERE ID_PRACTICANTES = :id");
 
-	// 	$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
-	// 	$stmt -> bindParam(":Practicantes", $Practicantes, PDO::PARAM_STR);
-	// 	$stmt -> bindParam(":ruta", $ruta, PDO::PARAM_STR);
-	// 	$stmt -> bindParam(":estado", $estado, PDO::PARAM_STR);
-	// 	$stmt -> bindParam(":fecha", $fecha, PDO::PARAM_STR);
+		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
+		$stmt -> bindParam(":nombres", $nombres, PDO::PARAM_STR);
+		$stmt -> bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
+		$stmt -> bindParam(":rut", $rut, PDO::PARAM_STR);
+		$stmt -> bindParam(":institucion_id", $institucion_id, PDO::PARAM_INT);
+		$stmt -> bindParam(":carrera_id", $carrera_id, PDO::PARAM_INT);
+		$stmt -> bindParam(":tipo_practica_id", $tipo_practica_id, PDO::PARAM_INT);
+		$stmt -> bindParam(":fecha_inicio", $fecha_inicio, PDO::PARAM_STR);
+		$stmt -> bindParam(":fecha_termino", $fecha_termino, PDO::PARAM_STR);
+		$stmt -> bindParam(":foto", $foto, PDO::PARAM_STR);
+		$stmt -> bindParam(":encargado_id", $encargado_id, PDO::PARAM_INT);
 
-	// 	if($stmt -> execute()){
-    //         return "La categoría se actualizó correctamente";
-    //     }else{
-    //         return "Error, no se pudo actualizar la categoría";
-    //     }        
+		if($stmt -> execute()){
+            return "El practicante se actualizó correctamente";
+        }else{
+            return "Error, no se pudo actualizar el practicante";
+        }        
 
-    //     $stmt = null;
-	// }
+        $stmt = null;
+	}
 	
 
 }

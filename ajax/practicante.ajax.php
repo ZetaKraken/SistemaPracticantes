@@ -77,17 +77,23 @@ if(!isset($_POST["accion"])){
 		$eliminar->eliminarPracticantes();
 	}
 
-	// if($_POST["accion"] == "actualizar"){
-	// 	$actualizar = new ajaxPracticantes();
+	if($_POST["accion"] == "actualizar"){
+		$actualizar = new ajaxPracticantes();
 
-	// 	$actualizar->id = $_POST["id"];
-	// 	$actualizar->Practicantes = $_POST["Practicantes"];
-	// 	$actualizar->ruta = $_POST["ruta"];
-	// 	$actualizar->estado = $_POST["estado"];
-	// 	$actualizar->fecha = $_POST["fecha"];
+		$actualizar->id = $_POST["id"];
+		$actualizar->nombres = $_POST["nombres"];
+		$actualizar->apellidos = $_POST["apellidos"];
+		$actualizar->rut = $_POST["rut"];
+		$actualizar->institucion_id = $_POST["institucion_id"];
+		$actualizar->carrera_id = $_POST["carrera_id"];
+		$actualizar->tipo_practica_id = $_POST["tipo_practica_id"];
+		$actualizar->fecha_inicio = $_POST["fecha_inicio"];
+		$actualizar->fecha_termino = $_POST["fecha_termino"];
+		$actualizar->foto = $_POST["foto"];
+		$actualizar->encargado_id = $_POST["encargado_id"];
 		
-	// 	$actualizar->actualizarPracticantes();
-	// }
+		$actualizar->actualizarPracticantes();
+	}
 
 }
 
