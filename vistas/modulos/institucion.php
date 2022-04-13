@@ -348,7 +348,7 @@
         $('#tablaInstituciones tbody').on('click','.btnEliminar',function(){
             var data = table.row($(this).parents('tr')).data();
             
-            var id = data["ID_institucion"];
+            var id = data["ID_INSTITUCION"];
 
             var datos = new FormData();
             datos.append('accion',"eliminar")

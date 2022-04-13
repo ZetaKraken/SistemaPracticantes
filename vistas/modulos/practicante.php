@@ -299,13 +299,13 @@
                     {"data": "NOMBRES"},
                     {"data": "APELLIDOS"},
                     {"data": "RUT"},
-                    {"data": "4"},
                     {"data": "5"},
-                    {"data": "6"},
+                    {"data": "7"},
+                    {"data": "9"},
                     {"data": "FECHA_INICIO"},
                     {"data": "FECHA_TERMINO"},
                     {"data": "FOTO"},
-                    {"data": "10"},
+                    {"data": "14"},
                     {"data": "acciones"},
                 ],
 
@@ -554,14 +554,14 @@
                             $("#txtnonbres").val(data["NOMBRES"]),
                             $("#txtapellidos").val(data["APELLIDOS"]),
                             $("#txtrut").val(data["RUT"]),
-                            $("#Sinstitucion").val(data["INSTITUCION_ID"]),
-                            $("#Scarrera").val(data["CARRERA_ID"]),
-                            $("#Stipo_practica").val(data["TIPO_PRACTICA_ID"]),
+                            $("#Sinstitucion").val(data["4"]),
+                            $("#Scarrera").val(data["6"]),
+                            $("#Stipo_practica").val(data["8"]),
                             $("#fecha_inicio").val(data["FECHA_INICIO"]),
                             $("#fecha_termino").val(data["FECHA_TERMINO"]),
                             $("#txtfoto").val(data["FOTO"]),
-                            $("#Sencargado").val(data["ENCARGADO_ID"]);
-            
+                            $("#Sencargado").val(data["13"]);
+                            //console.log("Imprimiendo "+data["4"]);
 
         })
 

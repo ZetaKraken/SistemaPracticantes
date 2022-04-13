@@ -6,7 +6,7 @@ class ModeloPracticantes{
 
 	static public function mdlMostrarPracticantes(){
 
-		$stmt = Conexion::conectar()-> prepare("SELECT ID_PRACTICANTES, NOMBRES, APELLIDOS, RUT, instituciones.NOMBRE, carreras.NOMBRE, tipo_practicas.NOMBRE, FECHA_INICIO, FECHA_TERMINO, FOTO, encargados.NOMBRE ,'X' as acciones FROM practicantes INNER JOIN instituciones ON practicantes.INSTITUCION_ID = instituciones.ID_INSTITUCION INNER JOIN carreras on practicantes.CARRERA_ID = carreras.ID_CARRERA INNER JOIN tipo_practicas on practicantes.TIPO_PRACTICA_ID = tipo_practicas.ID_TIPO_PRACTICA INNER JOIN encargados on practicantes.ENCARGADO_ID = encargados.ID_ENCARGADO");
+		$stmt = Conexion::conectar()-> prepare("SELECT ID_PRACTICANTES, NOMBRES, APELLIDOS, RUT, INSTITUCION_ID, instituciones.NOMBRE, CARRERA_ID, carreras.NOMBRE, TIPO_PRACTICA_ID , tipo_practicas.NOMBRE, FECHA_INICIO, FECHA_TERMINO, FOTO, ENCARGADO_ID ,encargados.NOMBRE ,'X' as acciones FROM practicantes INNER JOIN instituciones ON practicantes.INSTITUCION_ID = instituciones.ID_INSTITUCION INNER JOIN carreras on practicantes.CARRERA_ID = carreras.ID_CARRERA INNER JOIN tipo_practicas on practicantes.TIPO_PRACTICA_ID = tipo_practicas.ID_TIPO_PRACTICA INNER JOIN encargados on practicantes.ENCARGADO_ID = encargados.ID_ENCARGADO");
 
 		$stmt -> execute();
 
@@ -68,7 +68,7 @@ class ModeloPracticantes{
 												   FECHA_INICIO = :fecha_inicio,
 												   FECHA_TERMINO = :fecha_termino,
 												   FOTO = :foto,
-												   ENCARGADO_ID = :encargado_id,
+												   ENCARGADO_ID = :encargado_id
 											   WHERE ID_PRACTICANTES = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
