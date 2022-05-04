@@ -82,10 +82,12 @@
             =MODAL BODY
             ===============================================================-->
             <div class="modal-body">
-               <div class="row">
+            <form action="" method="post" enctype="multipart/from-data" >
+            <div class="row">
+
                    <div class="col-sm-4">
                         <div class="form-group">
-                            <input type="hidden" id ="idpracticantes" name ="practicantes" value ="">
+                            <input type="hidden" id ="idpracticantes" name ="practicantes" value ="" >
 
                             <label for="txtnombres">Nombres</label>
                             <input type="text" class="form-control" name="nombres" id="txtnonbres" placeholder="Ingrese el nombre">
@@ -229,8 +231,21 @@
                    </div>
                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="txtfoto">Foto</label>
-                            <input type="text" class="form-control" name="foto"    id="txtfoto" placeholder="Ingrese la foto">
+                            
+                            <div class="file-field input-field">
+                            <span>Eligue una imagen </span>
+                            <input type="file" name="foto" id="foto" >
+                            </div>
+                            <div class="file-path-wrapper">
+                            <input type="text" class="file-path validated" >
+                            </div>
+                            
+                        
+
+
+
+                            <!-- <label for="txtfoto">Foto</label>
+                            <input type="file" class="form-control" name="foto"    id="txtfoto" placeholder="Ingrese la foto"> -->
                         </div>
                    </div>
 
@@ -243,6 +258,14 @@
 
 
                </div>
+            
+            
+               </form>
+         
+            
+            
+            
+            
             </div>
             <!-- ============================================================
             =MODAL FOOTER
@@ -420,7 +443,7 @@
                    <div class="col-sm-4">
                         <div class="form-group">
                             <label for="txtfoto">Foto</label>
-                            <input type="text" class="form-control" name="foto"    id="txtfot" placeholder="Ingrese la foto">
+                            <input type="file" class="form-control" name="foto"    id="txtfot" placeholder="Ingrese la foto">
                         </div>
                    </div>
 
@@ -447,6 +470,12 @@
     </div>
 
 </div>
+
+<!-- SUBIR IMAGENES -->
+
+
+
+
 <!-- ./ VENTANA VERIFICAR RUT -->
 <script>
         function checkRut(rut) {
@@ -858,14 +887,16 @@
                 tipo_practica_id = $("#Stipo_practica").val(),
                 fecha_inicio = $("#fecha_inicio").val(),
                 fecha_termino = $("#fecha_termino").val(),
-                foto = $("#txtfoto").val(),
+                foto = $("#foto").val(),
                 encargado_id = $("#Sencargado").val();
 
-                console.warn("Imprimiendo "+rut);
+                console.warn("Imprimiendo "+foto);
 
                 //fecha = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+             
             
             var datos = new FormData();
+
 
             datos.append('id',id);
             datos.append('nombres',nombres);
@@ -876,12 +907,12 @@
             datos.append('tipo_practica_id',tipo_practica_id);
             datos.append('fecha_inicio',fecha_inicio);
             datos.append('fecha_termino',fecha_termino);
+            
             datos.append('foto',foto);
             datos.append('encargado_id',encargado_id);
             datos.append('accion',accion);
 
-           
-
+          
             
 
             swal.fire({

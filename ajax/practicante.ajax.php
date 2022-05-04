@@ -67,6 +67,7 @@ if(!isset($_POST["accion"])){
 		$insertar->encargado_id = $_POST["encargado_id"];
 
 		$insertar->registrarPracticantes();
+
 	}
 
 	if($_POST["accion"] == "eliminar"){

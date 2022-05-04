@@ -1,6 +1,7 @@
 <?php 
 
 require_once "conexion.php";
+require_once "../ajax/practicante.ajax.php";
 
 class ModeloPracticantes{
 
@@ -15,9 +16,24 @@ class ModeloPracticantes{
 		$stmt = null;
 	}
 
-	static public function mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
+	static public function mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto ,  $encargado_id){
+		
+		//print("imp".$foto); 
+		$foto = $_FILES['foto'];
+		$tmp_name = $foto['tmp_name'];
+		$ruta_destino= "img";
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO practicantes(NOMBRES, APELLIDOS, RUT, INSTITUCION_ID, CARRERA_ID, TIPO_PRACTICA_ID, FECHA_INICIO, FECHA_TERMINO, FOTO, ENCARGADO_ID) VALUES (:nombres, :apellidos, :rut, :institucion_id, :carrera_id, :tipo_practica_id, :fecha_inicio, :fecha_termino, :foto, :encargado_id)");
+		$img_file= $foto['name'];
+		$img_type= $foto['type'];
+
+		$destino = $ruta_destino.'/'. $img_file;
+
+		print("primera ".$destino);
+		print("segunda ".$foto);
+
+
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO practicantes(NOMBRES, APELLIDOS, RUT, INSTITUCION_ID, CARRERA_ID, TIPO_PRACTICA_ID, FECHA_INICIO, FECHA_TERMINO, FOTO, ENCARGADO_ID) VALUES (:nombres, :apellidos, :rut, :institucion_id, :carrera_id, :tipo_practica_id, :fecha_inicio, :fecha_termino, :destino ,:encargado_id)");
 		
 		$stmt -> bindParam(":nombres", $nombres, PDO::PARAM_STR);
 		$stmt -> bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
@@ -27,10 +43,12 @@ class ModeloPracticantes{
 		$stmt -> bindParam(":tipo_practica_id", $tipo_practica_id, PDO::PARAM_INT);
 		$stmt -> bindParam(":fecha_inicio", $fecha_inicio, PDO::PARAM_STR);
 		$stmt -> bindParam(":fecha_termino", $fecha_termino, PDO::PARAM_STR);
-		$stmt -> bindParam(":foto", $foto, PDO::PARAM_STR);
+		$stmt -> bindParam(":destino", $destino, PDO::PARAM_STR);
 		$stmt -> bindParam(":encargado_id", $encargado_id, PDO::PARAM_INT);
-
+		
 		if($stmt -> execute()){
+			//$foto = str_replace( "\\", '/', $foto );
+			//move_uploaded_file($foto, $ruta);
             return "El practicante se registró correctamente";
         }else{
             return "Error, no se pudo registrar el practicante";
