@@ -82,9 +82,9 @@
             =MODAL BODY
             ===============================================================-->
             <div class="modal-body">
-            <form action="" method="post" enctype="multipart/from-data" >
+            
             <div class="row">
-
+            
                    <div class="col-sm-4">
                         <div class="form-group">
                             <input type="hidden" id ="idpracticantes" name ="practicantes" value ="" >
@@ -229,38 +229,38 @@
                         </div>
                        
                    </div>
+                      
+                   
+                  
                    <div class="col-sm-4">
+                   <form method="post" action="#" enctype="multipart/form-data">
                         <div class="form-group">
                             
-                            <div class="file-field input-field">
-                            <span>Eligue una imagen </span>
-                            <input type="file" name="foto" id="foto" >
-                            </div>
-                            <div class="file-path-wrapper">
-                            <input type="text" class="file-path validated" >
-                            </div>
+                       
+							<label for="foto">Nueva imagen</label>
+							<input type="file" class="form-control-file" name="foto" id="foto">
+					
+			
+				
                             
-                        
+						</div>
+                       
+                  </form>
 
 
-
-                            <!-- <label for="txtfoto">Foto</label>
-                            <input type="file" class="form-control" name="foto"    id="txtfoto" placeholder="Ingrese la foto"> -->
-                        </div>
                    </div>
-
-
+                  
 
 
 
                    
-
+  
+           
 
 
                </div>
             
-            
-               </form>
+          
          
             
             
@@ -441,10 +441,21 @@
                        
                    </div>
                    <div class="col-sm-4">
+               
                         <div class="form-group">
-                            <label for="txtfoto">Foto</label>
-                            <input type="file" class="form-control" name="foto"    id="txtfot" placeholder="Ingrese la foto">
-                        </div>
+                            
+                           
+                        <img src=""    alt="Este es el ejemplo de un texto alternativo" width="80" height="60">
+						
+					
+			
+				
+                            
+						</div>
+                       
+                  
+
+
                    </div>
 
 
@@ -779,6 +790,7 @@
           $('#tablaPracticante tbody').on('click','.btnVer',function(){
             
             var data = table.row($(this).parents('tr')).data();
+          
             accion = "actualizar";
 
                             $("#idpracticante").val(data["ID_PRACTICANTES"]),
@@ -790,9 +802,12 @@
                             $("#Stipo_practic").val(data["8"]),
                             $("#fecha_inici").val(data["FECHA_INICIO"]),
                             $("#fecha_termin").val(data["FECHA_TERMINO"]),
-                            $("#txtfot").val(data["FOTO"]),
-                            $("#Sencargad").val(data["13"]);
-                            console.log("Imprimiendo "+data["NOMBRES"]);
+                            $("#Sencargad").val(data["13"]),
+                            //$("#foto").val(data["FOTO"]),
+                        
+                           
+                            
+                            console.log("Imprimiendo "+$destino);
 
         })
 
@@ -869,9 +884,13 @@
                             $("#Stipo_practica").val(data["8"]),
                             $("#fecha_inicio").val(data["FECHA_INICIO"]),
                             $("#fecha_termino").val(data["FECHA_TERMINO"]),
-                            $("#txtfoto").val(data["FOTO"]),
-                            $("#Sencargado").val(data["13"]);
-                            //console.log("Imprimiendo "+data["4"]);
+                            
+                            $("#Sencargado").val(data["13"]),
+                          
+                            $("#foto").val(data["12"]);
+                       
+                           
+                           //console.log("Imprimiendo "+data["12"]);
 
         })
 
@@ -887,14 +906,15 @@
                 tipo_practica_id = $("#Stipo_practica").val(),
                 fecha_inicio = $("#fecha_inicio").val(),
                 fecha_termino = $("#fecha_termino").val(),
-                foto = $("#foto").val(),
+                //foto = $("#foto").val(),
                 encargado_id = $("#Sencargado").val();
 
                 console.warn("Imprimiendo "+foto);
 
                 //fecha = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
              
-            
+            var foto = $('#foto')[0].files[0];
+           
             var datos = new FormData();
 
 
@@ -911,6 +931,7 @@
             datos.append('foto',foto);
             datos.append('encargado_id',encargado_id);
             datos.append('accion',accion);
+          
 
           
             

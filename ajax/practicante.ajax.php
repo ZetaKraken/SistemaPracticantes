@@ -63,7 +63,7 @@ if(!isset($_POST["accion"])){
 		$insertar->tipo_practica_id = $_POST["tipo_practica_id"];
 		$insertar->fecha_inicio = $_POST["fecha_inicio"];
 		$insertar->fecha_termino = $_POST["fecha_termino"];
-		$insertar->foto = $_POST["foto"];
+		$insertar->foto = $_FILES["foto"];
 		$insertar->encargado_id = $_POST["encargado_id"];
 
 		$insertar->registrarPracticantes();
@@ -90,7 +90,7 @@ if(!isset($_POST["accion"])){
 		$actualizar->tipo_practica_id = $_POST["tipo_practica_id"];
 		$actualizar->fecha_inicio = $_POST["fecha_inicio"];
 		$actualizar->fecha_termino = $_POST["fecha_termino"];
-		$actualizar->foto = $_POST["foto"];
+		$actualizar->foto = $_FILES["foto"];
 		$actualizar->encargado_id = $_POST["encargado_id"];
 		
 		$actualizar->actualizarPracticantes();

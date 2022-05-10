@@ -18,18 +18,23 @@ class ModeloPracticantes{
 
 	static public function mdlRegistrarPracticantes($nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto ,  $encargado_id){
 		
-		//print("imp".$foto); 
-		$foto = $_FILES['foto'];
-		$tmp_name = $foto['tmp_name'];
-		$ruta_destino= "img";
-
-		$img_file= $foto['name'];
-		$img_type= $foto['type'];
-
-		$destino = $ruta_destino.'/'. $img_file;
-
-		print("primera ".$destino);
-		print("segunda ".$foto);
+		
+		
+			if(!empty($_FILES) && isset($_FILES['foto'])){
+				//print_r("paso por aca".$_FILES);
+				$img = $_FILES['foto']['name'];
+				$ruta = $_FILES['foto']['tmp_name'];
+				$destino = "./img/".$img;
+					if (move_uploaded_file($_FILES["foto"]["tmp_name"], "../img/".$_FILES['foto']['name'])) {
+						//more code here...
+						print("aqui voy");
+						echo "./img/".$_FILES['foto']['name'];
+					} else {
+						echo 0;
+					}
+				}else{
+					print("error en la imagen bb");
+				}
 
 
 
@@ -75,7 +80,21 @@ class ModeloPracticantes{
 	}
 
 	static public function mdlActualizarPracticantes($id,$nombres, $apellidos, $rut, $institucion_id, $carrera_id, $tipo_practica_id, $fecha_inicio, $fecha_termino, $foto, $encargado_id){
-
+		if(!empty($_FILES) && isset($_FILES['foto'])){
+			//print_r("paso por aca".$_FILES);
+			$img = $_FILES['foto']['name'];
+			$ruta = $_FILES['foto']['tmp_name'];
+			$destino = "./img/".$img;
+				if (move_uploaded_file($_FILES["foto"]["tmp_name"], "../img/".$_FILES['foto']['name'])) {
+					//more code here...
+					print("aqui voy");
+					echo "./img/".$_FILES['foto']['name'];
+				} else {
+					echo 0;
+				}
+			}else{
+				print("error en la imagen bb");
+			}
 		$stmt = Conexion::conectar()->prepare("UPDATE practicantes
 											   SET NOMBRES = :nombres,
 											   	   APELLIDOS = :apellidos,
@@ -85,7 +104,7 @@ class ModeloPracticantes{
 												   TIPO_PRACTICA_ID = :tipo_practica_id,
 												   FECHA_INICIO = :fecha_inicio,
 												   FECHA_TERMINO = :fecha_termino,
-												   FOTO = :foto,
+												   FOTO = :destino,
 												   ENCARGADO_ID = :encargado_id
 											   WHERE ID_PRACTICANTES = :id");
 
@@ -98,7 +117,7 @@ class ModeloPracticantes{
 		$stmt -> bindParam(":tipo_practica_id", $tipo_practica_id, PDO::PARAM_INT);
 		$stmt -> bindParam(":fecha_inicio", $fecha_inicio, PDO::PARAM_STR);
 		$stmt -> bindParam(":fecha_termino", $fecha_termino, PDO::PARAM_STR);
-		$stmt -> bindParam(":foto", $foto, PDO::PARAM_STR);
+		$stmt -> bindParam(":destino", $destino, PDO::PARAM_STR);
 		$stmt -> bindParam(":encargado_id", $encargado_id, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
